@@ -1,0 +1,18 @@
+Digital ocean
+
+** Connection Prams**
+
+username = doadmin
+password = vc36kby189qbl403
+host = db-postgresql-nyc3-79966-do-user-6282198-0.db.ondigitalocean.com
+port = 25060
+database = defaultdb
+sslmode = require
+
+** Connection string **
+
+postgresql://doadmin:vc36kby189qbl403@db-postgresql-nyc3-79966-do-user-6282198-0.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+
+** Flags **
+
+PGPASSWORD=vc36kby189qbl403 psql -U doadmin -h db-postgresql-nyc3-79966-do-user-6282198-0.db.ondigitalocean.com -p 25060 -d defaultdb --set=sslmode=require
