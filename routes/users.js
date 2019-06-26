@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 const Users = require("../Models/Users");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
@@ -21,7 +23,8 @@ router.get("/", (req, res) => {
 //@Route    POST api/user/add
 //@Desc     Register User
 //@Access   Private
-//@Status   WORKING Done
+//@Status   jwt web token not grabbimg user id at creation ///////////////////////////////////////???? UUID ???? ///////////////////
+// TODO  Add uuid to user for jwt
 router.post(
   "/add",
   [
@@ -40,7 +43,6 @@ router.post(
     const { name, email, password } = req.body;
     try {
       let user = await Users.findOne({ where: { email: req.body.email } });
-      // Options ?? ///////////////////////////////////////////////////////////////////////////////////
 
       if (user) {
         return res.status(400).json({ msg: "User Allready exists" });
@@ -60,12 +62,34 @@ router.post(
         name: req.body.name,
         email: req.body.email,
         password: user.password
-      })
-        //.then(user => console.log(user))
-        .then(res.send(200))
-        .catch(err => console.log("Err", err));
+      });
+
+      console.log("user", user);
+      const payload = {
+        user: {
+          id: user.Id
+        }
+      };
+
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        {
+          // 14 hours
+          expiresIn: 50400000
+        },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
+
+      // .then(user => console.log(user))
+      // .then(res.send(200))
+      // .catch(err => console.log("Err", err));
     } catch (err) {
-      console.log("new User", err);
+      console.error(err.message);
+      res.status(500).send("Server Error RouteU93");
     }
   }
 );

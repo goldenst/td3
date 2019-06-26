@@ -15,6 +15,9 @@ const User = db.define ('user', {
   // isActive: {
   //   type: Sequelize.BOOLEAN,
   //   default: true
+  // },
+  // uids: {
+  //   type: Sequelize.STRING
   // }
 })
 
