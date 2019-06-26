@@ -11,6 +11,11 @@ const User = db.define ('user', {
   password: {
     type: Sequelize.STRING
   }
+  // },
+  // isActive: {
+  //   type: Sequelize.BOOLEAN,
+  //   default: true
+  // }
 })
 
 module.exports = User;

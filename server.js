@@ -7,11 +7,14 @@ const db = require ('./config/db')
 //test db
 db.authenticate()
   .then(() => {
-    console.log("Connection has been established successfully.");
+    console.log("Connection has been established successfully to live postgres server.");
   })
   .catch(err => {
     console.error("Unable to connect to the database:", err);
   });
+
+// Init Middleware
+app.use(express.json({ extended: false }))
 
 app.get("/", (req, res) => res.json({ msg: "ServerRunning" }));
 

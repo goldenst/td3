@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
 //@Route    POST api/profiles
 //@Desc     add New profiles
 //@Access   Private
+//@Status   In Complete
 router.post("/", (req, res) => {
   res.send("Add profiles");
 });
@@ -18,6 +19,7 @@ router.post("/", (req, res) => {
 //@Route    PUT api/profiles/:id
 //@Desc     Update profiles
 //@Access   Private
+//@Status   In Complete
 router.put("/:id", (req, res) => {
   res.send("Update profiles");
 });
@@ -25,6 +27,7 @@ router.put("/:id", (req, res) => {
 //@Route    DELETE api/profiles/:id
 //@Desc     DELETE profiles
 //@Access   Private
+//@Status   In Complete
 router.delete("/:id", (req, res) => {
   res.send("Delete profiles");
 });
