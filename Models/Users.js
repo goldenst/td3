@@ -1,7 +1,10 @@
-const Sequelize = require ('sequelize');
-const db = require ('../config/db');
+const Sequelize = require('sequelize');
+const db = require('../config/db');
 
-const User = db.define ('user', {
+const User = db.define('user', {
+  uid: {
+    type: Sequelize.STRING
+  },
   name: {
     type: Sequelize.STRING
   },
@@ -10,16 +13,7 @@ const User = db.define ('user', {
   },
   password: {
     type: Sequelize.STRING
-  },
-  // },
-  // isActive: {
-  //   type: Sequelize.BOOLEAN,
-  //   default: true
-  // },
-  uid: {
-    type: Sequelize.ABSTRACT    
- 
   }
-})
+});
 
 module.exports = User;

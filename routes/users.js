@@ -63,7 +63,7 @@ router.post(
       user.password = await bcrypt.hash(password, salt);
 
       await Users.create({
-        uid: ruid,
+        id: ruid,
         name: req.body.name,
         email: req.body.email,
         password: user.password
@@ -71,7 +71,7 @@ router.post(
 
       const payload = {
         user: {
-          uid: ruid,
+          id: ruid,
           
         }
       };

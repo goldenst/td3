@@ -8,20 +8,21 @@ const { check, validationResult } = require("express-validator");
 const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
 
-
 //@Route    GET api/auth
 //@Desc     get loged in User
 //@Access   Private
-//@Status   In Complete
+//@Status   In Complete  // Wont Remove password from user !!
 router.get("/", auth, async (req, res) => {
-  
   try {
-    const users = await Users.findOne({ where: {uid: req.user.uid}}).select("-password");
-    console.log(users)
+    const users = await Users.findAll({
+      where: { id: req.user.id },
+      attributes: { exclude: ["user.password"] }
+    }); //select("-password");
+    console.log(users);
     res.json(users);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send(" Server Error  RouteA21");
+    res.status(500).send(" Server Error  RouteA25");
   }
 });
 
@@ -58,7 +59,7 @@ router.post(
 
       const payload = {
         user: {
-          id: user.uid
+          id: user.id
         }
       };
 
