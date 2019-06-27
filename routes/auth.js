@@ -5,20 +5,30 @@ const Users = require("../Models/Users");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
+const auth = require("../middleware/auth");
 const bcrypt = require("bcryptjs");
+
 
 //@Route    GET api/auth
 //@Desc     get loged in User
 //@Access   Private
 //@Status   In Complete
-router.get("/", (req, res) => {
-  res.send("Get loged in User");
+router.get("/", auth, async (req, res) => {
+  
+  try {
+    const users = await Users.findOne({ where: {uid: req.user.uid}}).select("-password");
+    console.log(users)
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send(" Server Error  RouteA21");
+  }
 });
 
 //@Route    POST api/auth
 //@Desc     auth User and Get Token
 //@Access   Public
-//@Status   In Complete // not getting user id from jwt payload ???? UUID ???? ///////////////////
+//@Status   working !!
 router.post(
   "/",
   [
@@ -48,7 +58,7 @@ router.post(
 
       const payload = {
         user: {
-          id: user.Id
+          id: user.uid
         }
       };
 
@@ -59,14 +69,14 @@ router.post(
           // 14 hours
           expiresIn: 50400000
         },
-        
+
         (err, token) => {
           if (err) throw err;
           res.json({ token });
         }
       );
 
-      console.log(user.id, user.name, payload )
+      console.log(user.id, user.name, payload);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error RouteA69");

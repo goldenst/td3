@@ -10,15 +10,16 @@ const User = db.define ('user', {
   },
   password: {
     type: Sequelize.STRING
-  }
+  },
   // },
   // isActive: {
   //   type: Sequelize.BOOLEAN,
   //   default: true
   // },
-  // uids: {
-  //   type: Sequelize.STRING
-  // }
+  uid: {
+    type: Sequelize.ABSTRACT    
+ 
+  }
 })
 
 module.exports = User;
