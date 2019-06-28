@@ -11,7 +11,7 @@ const Employee = require("../Models/Employee");
 //@Desc     get all employees
 //@Access   Private
 //@Status   Working
-router.get("/", auth, (req, res) => {
+router.get("/", (req, res) => {
   Employee.findAll()
     .then(employee => {
       console.log(employee);
@@ -95,9 +95,65 @@ router.post("/add", auth, async (req, res) => {
 //@Route    PUT api/employee/:id
 //@Desc     Update employee
 //@Access   Private
-//@Status   InComplete
+//@Status   InComplete  finish prams  route does update
 router.put("/:id", (req, res) => {
-  res.send("Update profiles");
+  //res.send("Update profiles");
+  const {
+    first_name,
+    last_name,
+    email,
+    address,
+    city,
+    state,
+    zip,
+    cell_number,
+    drivers_licence,
+    licence_exp,
+    emergency_contact,
+    emergency_contact_number,
+    emergency_relation,
+    tsac,
+    tims,
+    rspt,
+    bat101,
+    bat_hybird,
+    hire_date,
+    is_active,
+    leave_date,
+    is_admin
+  } = req.body
+
+  Employee.update(
+    { 
+      first_name,
+      last_name,
+      email,
+      address,
+      city,
+      state,
+      zip,
+      cell_number,
+      drivers_licence,
+      licence_exp,
+      emergency_contact,
+      emergency_contact_number,
+      emergency_relation,
+      tsac,
+      tims,
+      rspt,
+      bat101,
+      bat_hybird,
+      hire_date,
+      is_active,
+      leave_date,
+      is_admin
+    },
+    { where: { id: req.params.id } }
+  )
+  .then(employee => {
+    console.log(employee);
+    res.json(employee);
+  });
 });
 
 //@Route    DELETE api/employee/:id

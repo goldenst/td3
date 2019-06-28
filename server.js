@@ -2,6 +2,8 @@ const express = require("express");
 
 
 const app = express();
+
+
 // connect to db
 const db = require ('./config/db')
 //test db
@@ -22,6 +24,7 @@ app.get("/", (req, res) => res.json({ msg: "ServerRunning" }));
 app.use("/api/users", require("./routes/users"));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/employee", require("./routes/employee"));
+app.use("/api/customers", require("./routes/customer"));
 
 const PORT = process.env.PORT || 5000;
 
