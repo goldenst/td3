@@ -18,8 +18,16 @@ CREATE TABLE users (
 CREATE TABLE employees (
 
   id SERIAL PRIMARY KEY,
+  is_admin BOOLIAN ,
   first_name VARCHAR(30),
   last_name VARCHAR(30) NOT NULL,
+  emp_address VARCHAR(64),
+  emp_city VARCHAR(30),
+  emp_state VARCHAR(30),
+  emp_state VARCHAR(2),
+  emp_zip VARCHAR(2),
+  cell_number VARCHAR(12),
+  
   date_of_birth DATE,
 );
 
@@ -33,7 +41,7 @@ CREATE TABLE customers (
   cust_address VARCHAR(100),
   cust_city VARCHAR(30),
   cust_state VARCHAR(2),
-  cust_zip VARCHAR(5)
+  cust_zip VARCHAR(5),
   cell_number VARCHAR(12),
   cust_email VARCHAR(64)
 );
