@@ -11,7 +11,7 @@ const Employee = require("../Models/Employee");
 //@Desc     get all employees
 //@Access   Private
 //@Status   Working
-router.get("/", auth, (req, res) => {
+router.get("/",  (req, res) => {
   Employee.findAll()
     .then(employee => {
       console.log(employee);

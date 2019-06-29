@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../config/db");
 const Users = require("../Models/Users");
 const jwt = require("jsonwebtoken");
+const auth = require("../middleware/auth");
 const config = require("config");
 const uuid = require("uuid/v4");
 var randomId = require("random-id-util");

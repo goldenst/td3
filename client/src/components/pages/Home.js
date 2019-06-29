@@ -1,9 +1,16 @@
 import React from "react";
+import Employee from '../employees/Employee'
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home page</h1>
+    <div className='grid-2'>
+      <div>
+        employee form
+      </div>
+      <div>
+        <Employee />
+      </div>
+      
     </div>
   );
 };
