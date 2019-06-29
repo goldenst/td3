@@ -11,7 +11,7 @@ const Employee = require("../Models/Employee");
 //@Desc     get all employees
 //@Access   Private
 //@Status   Working
-router.get("/", (req, res) => {
+router.get("/", auth, (req, res) => {
   Employee.findAll()
     .then(employee => {
       console.log(employee);
@@ -96,7 +96,7 @@ router.post("/add", auth, async (req, res) => {
 //@Desc     Update employee
 //@Access   Private
 //@Status   InComplete  finish prams  route does update
-router.put("/:id", (req, res) => {
+router.put("/:id", auth, (req, res) => {
   //res.send("Update profiles");
   const {
     first_name,

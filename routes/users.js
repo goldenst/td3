@@ -13,7 +13,7 @@ const bcrypt = require("bcryptjs");
 //@Desc     get User
 //@Access   Private
 //@Status   Works Done
-router.get("/", (req, res) => {
+router.get("/", auth, (req, res) => {
   Users.findAll()
     .then(users => {
       console.log(users);
@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 //@Access   Private
 //@Status   Working
 router.post(
-  "/add",
+  "/add", auth,
   [
     // username must be an email
     check("email", "Must be an Email").isEmail(),
