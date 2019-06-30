@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-//import iiud from "iiud";
+import uuid from "uuid";
 import EmployeeContext from "./EmployeeContext";
 import EmployeeReducer from "./EmployeeReducer";
 import {
@@ -16,13 +16,21 @@ const EmployeeState = props => {
   const initalState = {
     employees: [
       {
-        name: "jeff"
+        id: '1',
+        first_name: "Jeff",
+        last_name: 'Welch',
+        cell_number: '555-555-5555',
+        type: ''
       },
       {
-        name: "Dave"
+        id: '2',
+        first_name: "Dave",
+        type: ''
       },
       {
-        name: "Sam"
+        id: '3',
+        first_name: "Sam",
+        type: ''
       }
     ]
   };
@@ -30,6 +38,10 @@ const EmployeeState = props => {
   const [state, dispatch] = useReducer(EmployeeReducer, initalState);
   // Create Actions Here
   // Add Employee
+  const addEmployee = employee => {
+    employee.id = uuid.v4();
+    dispatch({type: ADD_EMPLOYEE, payload: employee})
+  }
 
   // Delete Employee
 
@@ -46,7 +58,7 @@ const EmployeeState = props => {
   return (
     <EmployeeContext.Provider
       value={{
-        employees: state.employees
+        employees: state.employees, addEmployee
       }}
     >
       {props.children}

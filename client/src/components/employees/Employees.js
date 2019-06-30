@@ -1,7 +1,8 @@
 import React, { Fragment, useContext, useEffect } from "react";
+import ContactItem from './EmployeeItem';
 import EmployeeContext from "../../context/employee/EmployeeContext";
 
-const Employee = () => {
+const Employees = () => {
   const employeeContext = useContext(EmployeeContext);
 
   const { employees } = employeeContext;
@@ -10,7 +11,7 @@ const Employee = () => {
   return(
     <div>
     {employees.map(employee => (
-      <h3>{employee.name}</h3>
+      <ContactItem key={employee.id} employee={employee} />
     ))}
       </div>
    
@@ -18,4 +19,4 @@ const Employee = () => {
  
 };
 
-export default Employee;
+export default Employees;
