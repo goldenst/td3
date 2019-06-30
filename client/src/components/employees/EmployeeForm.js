@@ -1,8 +1,40 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import EmployeeContext from "../../context/employee/EmployeeContext";
 
 const EmployeeForm = () => {
   const employeeContext = useContext(EmployeeContext);
+
+  const { addEmployee, updateEmployee, clearCurrent, current } = employeeContext;
+
+  useEffect(() => {
+    if (current !== null) {
+      setEmployee(current);
+    } else {
+      setEmployee({
+        first_name: "",
+        last_name: "",
+        email: "",
+        address: "",
+        state: "",
+        zip: "",
+        cell_number: "",
+        drivers_licence: "",
+        licence_exp: "",
+        emergency_contact: "",
+        emergency_contact_number: "",
+        emergency_relation: "",
+        tsac: "",
+        tims: "",
+        rspt: "",
+        bat101: "",
+        bat_hybird: "",
+        hire_date: "",
+        is_active: true,
+        leave_date: "",
+        is_admin: "false"
+      });
+    }
+  }, [employeeContext, current]);
 
   const [employee, setEmployee] = useState({
     first_name: "",
@@ -53,40 +85,27 @@ const EmployeeForm = () => {
     is_admin
   } = employee;
 
-  const onChange = e =>
+  const onChange = e =>{
     setEmployee({ ...employee, [e.target.name]: e.target.value });
-
+  }
   const onSubmit = e => {
     e.preventDefault();
-    employeeContext.addEmployee(employee);
-    setEmployee({
-      first_name: "",
-      last_name: "",
-      email: "",
-      address: "",
-      state: "",
-      zip: "",
-      cell_number: "",
-      drivers_licence: "",
-      licence_exp: "",
-      emergency_contact: "",
-      emergency_contact_number: "",
-      emergency_relation: "",
-      tsac: "",
-      tims: "",
-      rspt: "",
-      bat101: "",
-      bat_hybird: "",
-      hire_date: "",
-      is_active: "true",
-      leave_date: "",
-      is_admin: "false"
-    });
-  };
+    if(current === null) {
+      addEmployee(employee);
+    } else {
+      updateEmployee(employee);
+    }
+    clearAll();
+  }
+    
+
+const clearAll = () => {
+ clearCurrent(); 
+}
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className="text-primary">Add Employee</h2>
+      <h2 className="text-primary">{current ? 'Edit Employee' : 'Add Employee'}</h2>
       <input
         type="text"
         placeholder="First Name"
@@ -250,12 +269,14 @@ const EmployeeForm = () => {
       <div>
         <input
           type="submit"
-          valur="Add Employee"
+          value={current ? 'Update Employee' : 'Add Employee'}
           className="btn brn-primary btn-block"
         />
       </div>
+      {current && <div><button className='btn btn-light btn-block'onClick={clearAll} >Clear Form</button></div>}
     </form>
   );
-};
-
+  
+ }
+  
 export default EmployeeForm;

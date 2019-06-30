@@ -16,23 +16,25 @@ const EmployeeState = props => {
   const initalState = {
     employees: [
       {
-        id: '1',
+        id: "1",
         first_name: "Jeff",
-        last_name: 'Welch',
-        cell_number: '555-555-5555',
-        type: ''
+        last_name: "Welch",
+        cell_number: "555-555-5555",
+        type: ""
       },
       {
-        id: '2',
+        id: "2",
         first_name: "Dave",
-        type: ''
+        type: ""
       },
       {
-        id: '3',
+        id: "3",
         first_name: "Sam",
-        type: ''
+        type: ""
       }
-    ]
+    ],
+    current: null,
+    filtered: null
   };
 
   const [state, dispatch] = useReducer(EmployeeReducer, initalState);
@@ -40,25 +42,48 @@ const EmployeeState = props => {
   // Add Employee
   const addEmployee = employee => {
     employee.id = uuid.v4();
-    dispatch({type: ADD_EMPLOYEE, payload: employee})
-  }
+    dispatch({ type: ADD_EMPLOYEE, payload: employee });
+  };
 
   // Delete Employee
+  const deleteEmployee = id => {
+    dispatch({ type: DELETE_EMPLOYEE, payload: id });
+  };
 
   // Set Current Employee
-
+  const setCurrent = employee => {
+    dispatch({ type: SET_CURRENT, payload: employee });
+  };
   // Clear Current Employee
-
+  const clearCurrent = () => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
   // Update Employee
-
+  const updateEmployee = employee => {
+    dispatch({ type: UPDATE_EMPLOYEE, payload: employee });
+  };
   // Filter Empoyee
-
+  const filterEmployees = text => {
+    dispatch({ type: FILTER_EMPLOYEE, payload: text });
+  };
   // Clear Filter
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <EmployeeContext.Provider
       value={{
-        employees: state.employees, addEmployee
+        employees: state.employees,
+        current: state.current,
+        filtered: state.filtered,
+        addEmployee,
+        deleteEmployee,
+        setCurrent,
+        clearCurrent,
+        updateEmployee,
+        filterEmployees,
+        clearFilter
       }}
     >
       {props.children}

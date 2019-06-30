@@ -38,28 +38,18 @@ const Customers = () => {
           />
         </div>
 
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputCity"
-              placeholder="City"
-            />
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>CA</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip" />
-          </div>
+        <div className="form-row">
+        <div className="col-7">
+          <input type="text" className="form-control" placeholder="City" />
         </div>
+        <div className="col">
+          <input type="text" className="form-control" placeholder="State" />
+        </div>
+        <div className="col">
+          <input type="text" className="form-control" placeholder="Zip" />
+        </div>
+      </div>
+      
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputAddress">E Mail - for Reciept Purposes</label>

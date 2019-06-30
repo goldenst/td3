@@ -1,17 +1,17 @@
 import React, { Fragment, useContext, useEffect } from "react";
-import ContactItem from './EmployeeItem';
+import EmployeeItem from './EmployeeItem';
 import EmployeeContext from "../../context/employee/EmployeeContext";
 
 const Employees = () => {
   const employeeContext = useContext(EmployeeContext);
 
-  const { employees } = employeeContext;
+  const { employees, filtered } = employeeContext;
   console.log('emp',employees);
   
   return(
     <div>
     {employees.map(employee => (
-      <ContactItem key={employee.id} employee={employee} />
+      <EmployeeItem key={employee.id} employee={employee} />
     ))}
       </div>
    

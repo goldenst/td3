@@ -5,6 +5,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Employee from "./components/pages/Employee";
 import Customers from "./components/pages/Customers";
+import Calls from "./components/pages/Calls";
 
 import EmployeeState from "./context/employee/EmployeeState";
 import "./App.css";
@@ -21,6 +22,7 @@ const App = () => {
               <Route exact path="/about" component={About} />
               <Route exact path="/customers" component={Customers} />
               <Route exact path="/employee" component={Employee} />
+              <Route exact path="/calls" component={Calls} />
             </Switch>
           </div>
         </Fragment>
