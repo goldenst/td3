@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "./components/layout/Navbar";
+//import Navbar from "./components/layout/Navbar";
+import NavbarAdmin from "./components/layout/NavbarAdmin";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import Employee from "./components/pages/Employee";
@@ -17,7 +18,8 @@ const App = () => {
     <EmployeeState>
       <Router>
         <Fragment>
-          <Navbar />
+          
+          <NavbarAdmin />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />

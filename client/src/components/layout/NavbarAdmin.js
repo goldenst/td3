@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
-const Navbar = ({ title, icon }) => {
+const NavbarAdmin = ({ title, icon }) => {
   return (
     <div className="navbar bg-primary">
       <h1>
@@ -19,19 +19,30 @@ const Navbar = ({ title, icon }) => {
         <li>
           <Link to="/calls">Calls</Link>
         </li>
-      
+        <li>
+        <Link to="/services">Services</Link>
+      </li>
+      <li>
+        <Link to="/reqby">Req By</Link>
+      </li>
+        <li>
+          <Link to="/employee">Employees</Link>
+        </li>
+        <li>
+          <Link to="/customers">Customers</Link>
+        </li>
       </ul>
     </div>
   );
 };
 
-Navbar.propTypes = {
+NavbarAdmin.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string
 };
 
-Navbar.defaultProps = {
-  title: "Tow Ducktivity",
+NavbarAdmin.defaultProps = {
+  title: "Tow Ducktivity     - Admin Navbar",
   icon: "fas fa-truck-monster"
 };
-export default Navbar;
+export default NavbarAdmin;

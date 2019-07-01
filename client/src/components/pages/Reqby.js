@@ -1,18 +1,22 @@
-import React from 'react'
+import React from "react";
+import ReqbyFilter from "../reqby/ReqbyFilter";
+import ReqbyForm from '../reqby/ReqbyForm';
+import ReqbyItem from '../reqby/ReqbyItem';
 
 const Reqby = () => {
   return (
-    <div className='grid-2'>
+    <div className="grid-2">
       <div>
-        <p>Requested by Form</p>
+        <ReqbyForm />
       </div>
+    
       <div>
-        <p>Search form</p>
-        <p>List of Accounts ?</p>
-      </div>
-      
+      <ReqbyFilter />
+      <ReqbyItem /> 
     </div>
-  )
-}
+    </div>
+  );
 
-export default Reqby
+};
+
+export default Reqby;
