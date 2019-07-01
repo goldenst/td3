@@ -88,6 +88,7 @@ const EmployeeForm = () => {
   const onChange = e =>{
     setEmployee({ ...employee, [e.target.name]: e.target.value });
   }
+  
   const onSubmit = e => {
     e.preventDefault();
     if(current === null) {

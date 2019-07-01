@@ -6,6 +6,8 @@ import About from "./components/pages/About";
 import Employee from "./components/pages/Employee";
 import Customers from "./components/pages/Customers";
 import Calls from "./components/pages/Calls";
+import Services from './components/pages/Services';
+import Reqby from './components/pages/Reqby';
 
 import EmployeeState from "./context/employee/EmployeeState";
 import "./App.css";
@@ -23,6 +25,8 @@ const App = () => {
               <Route exact path="/customers" component={Customers} />
               <Route exact path="/employee" component={Employee} />
               <Route exact path="/calls" component={Calls} />
+              <Route exact path="/services" component={Services} />
+              <Route exact path="/reqby" component={Reqby} />
             </Switch>
           </div>
         </Fragment>

@@ -1,6 +1,9 @@
 import React from "react";
 
 const CallForm = () => {
+
+  const onChange = e => {};
+
   return (
     <div>
       <form>
@@ -11,18 +14,20 @@ const CallForm = () => {
         <div className="form-row">
           <div className="form-group col-md-6">
             <input
-              type="email"
-              className="form-control"
-              id="name"
+              type="text"
+              id="req_by"
               placeholder="Requested By"
+              //value={req_by}
+              onChange={onChange}
             />
           </div>
           <div className="form-group col-md-6">
             <input
               type="text"
-              className="form-control"
-              id="cell"
+              id="aaa_call_number"
               placeholder="AAA Call Number"
+              //value={aaa_call-number}
+              onChange={onChange}
             />
           </div>
         </div>
@@ -30,9 +35,10 @@ const CallForm = () => {
           <div className="form-group col-md-6">
             <input
               type="email"
-              className="form-control"
-              id="name"
+              id="customer"
               placeholder="Customer / Member"
+              //value={customer}
+              onChange={onChange}
             />
           </div>
           <div className="form-group col-md-6">
@@ -163,7 +169,7 @@ const CallForm = () => {
             />
           </div>
         </div>
-        <textarea type='text' placeholder='Comments / Notes' />
+        <textarea type="text" placeholder="Comments / Notes" />
 
         <div>
           <input

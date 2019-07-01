@@ -20,6 +20,12 @@ const Navbar = ({ title, icon }) => {
           <Link to="/calls">Calls</Link>
         </li>
         <li>
+        <Link to="/services">Services</Link>
+      </li>
+      <li>
+        <Link to="/reqby">Req By</Link>
+      </li>
+        <li>
           <Link to="/employee">Employees</Link>
         </li>
         <li>
