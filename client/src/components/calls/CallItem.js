@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 
 const CallItem = ({ call }) => {

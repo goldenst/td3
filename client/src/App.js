@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 //import Navbar from "./components/layout/Navbar";
 import NavbarAdmin from "./components/layout/NavbarAdmin";
 import Home from "./components/pages/Home";
@@ -10,12 +11,16 @@ import Calls from "./components/pages/Calls";
 import Services from './components/pages/Services';
 import Reqby from './components/pages/Reqby';
 
-import EmployeeState from "./context/employee/EmployeeState";
+// redux 
+import { Provider } from 'react-redux';
+//import store from './store';
+
+
 import "./App.css";
 
 const App = () => {
   return (
-    <EmployeeState>
+    <Provider >
       <Router>
         <Fragment>
           
@@ -33,7 +38,7 @@ const App = () => {
           </div>
         </Fragment>
       </Router>
-    </EmployeeState>
+      </Provider>
   );
 };
 

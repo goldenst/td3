@@ -1,11 +1,11 @@
-import React, { Fragment, useContext, useEffect } from "react";
+import React from "react";
 import EmployeeItem from './EmployeeItem';
-import EmployeeContext from "../../context/employee/EmployeeContext";
+
 
 const Employees = () => {
-  const employeeContext = useContext(EmployeeContext);
+  
 
-  const { employees, filtered } = employeeContext;
+ const employees = ''
   console.log('emp',employees);
   
   return(

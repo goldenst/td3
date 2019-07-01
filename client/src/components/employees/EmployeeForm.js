@@ -1,42 +1,14 @@
-import React, { useState, useContext, useEffect } from "react";
-import EmployeeContext from "../../context/employee/EmployeeContext";
+import React from "react";
+
 
 const EmployeeForm = () => {
-  const employeeContext = useContext(EmployeeContext);
+ 
+const employee = ''
+  const { addEmployee, updateEmployee, clearCurrent, current } = employee;
 
-  const { addEmployee, updateEmployee, clearCurrent, current } = employeeContext;
 
-  useEffect(() => {
-    if (current !== null) {
-      setEmployee(current);
-    } else {
-      setEmployee({
-        first_name: "",
-        last_name: "",
-        email: "",
-        address: "",
-        state: "",
-        zip: "",
-        cell_number: "",
-        drivers_licence: "",
-        licence_exp: "",
-        emergency_contact: "",
-        emergency_contact_number: "",
-        emergency_relation: "",
-        tsac: "",
-        tims: "",
-        rspt: "",
-        bat101: "",
-        bat_hybird: "",
-        hire_date: "",
-        is_active: true,
-        leave_date: "",
-        is_admin: "false"
-      });
-    }
-  }, [employeeContext, current]);
 
-  const [employee, setEmployee] = useState({
+  const  setEmployee = ({
     first_name: "",
     last_name: "",
     email: "",
